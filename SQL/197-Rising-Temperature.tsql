@@ -1,0 +1,14 @@
+/* Write your T-SQL query statement below */
+SELECT
+Today.id as Id
+--,Today.recordDate as Today,
+--Today.temperature,
+--DATEADD(DAY, 1, yestrday.recordDate) as [yestrday+1],
+--yestrday.recordDate as yestarday,
+--yestrday.temperature
+From 
+Weather as yestrday
+INNER JOIN 
+Weather as Today ON  
+Today.recordDate=DATEADD(DAY, 1, yestrday.recordDate)
+Where Today.temperature >yestrday.temperature
