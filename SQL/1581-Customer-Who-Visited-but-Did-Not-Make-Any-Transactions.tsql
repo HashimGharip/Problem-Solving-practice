@@ -1,0 +1,21 @@
+/* Write your T-SQL query statement below */
+
+Select 
+customer_id,
+Count(Visits.visit_id) as count_no_trans
+From 
+Visits
+LEFT JOIN Transactions
+On Visits.visit_id=Transactions.visit_id
+Where transaction_id is null
+Group BY customer_id
+
+/*
+Select 
+customer_id,
+Count(Visits.visit_id) as count_no_trans
+From 
+Visits
+Where visit_id not in (Select visit_id From Transactions )
+Group BY customer_id
+*/
