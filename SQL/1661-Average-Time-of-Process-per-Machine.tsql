@@ -1,0 +1,12 @@
+/* Write your T-SQL query statement below */
+
+SELECT 
+ActivityStart.machine_id,
+Round(AVG(ActivityStart.timestamp - ActivityEND.timestamp ),3) as processing_time
+FROM
+Activity as [ActivityStart]
+INNER Join
+Activity as[ActivityEND] on ActivityStart.machine_id=ActivityEND.machine_id
+AND ActivityStart.process_id=ActivityEND.process_id
+Where ActivityStart.timestamp > ActivityEND.timestamp
+Group BY ActivityStart.machine_id
