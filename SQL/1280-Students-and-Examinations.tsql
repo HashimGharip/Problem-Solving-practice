@@ -1,0 +1,39 @@
+/* Write your T-SQL query statement below */
+Select 
+Students.student_id,
+student_name,
+Subjects.subject_name,
+Count(Examinations.subject_name)as attended_exams
+From Subjects Cross join  Students 
+left join Examinations
+on Examinations.student_id=Students.student_id
+AND Examinations.subject_name=Subjects.subject_name
+Group by 
+Students.student_id,
+student_name,
+Subjects.subject_name
+Order By 
+Students.student_id,
+Subjects.subject_name
+
+
+
+
+
+/*Select
+Students.student_id,student_name,subject_name,attended_exams
+From Students
+Inner Join 
+(Select 
+student_id,
+Subjects.subject_name,
+Count(Subjects.subject_name) as attended_exams
+From Subjects
+Left Join  Examinations
+on Subjects.subject_name=Examinations.subject_name
+Group By 
+student_id,
+Subjects.subject_name) as Examinations
+On Students.student_id=Examinations.student_id
+Order By Students.student_id,subject_name
+*/
