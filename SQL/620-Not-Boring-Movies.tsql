@@ -1,0 +1,8 @@
+/* Write your T-SQL query statement below */
+Select 
+id,movie,[description],rating
+FROM 
+Cinema
+Where [description] !='boring'
+AND id %2 !=0
+order by rating DESC
