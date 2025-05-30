@@ -1,0 +1,10 @@
+/* Write your T-SQL query statement below */
+Select 
+r.contest_id ,
+Round(Count(DISTINCT(r.user_id))* 100.0 / (Select Count(user_id) from Users)
+ ,2) as percentage 
+
+FROM Register r
+GROUP BY r.contest_id
+ORDER BY percentage DESC, r.contest_id ASC;
+
