@@ -1,0 +1,5 @@
+/* Write your T-SQL query statement below */
+Select project_id ,Round(AVG(experience_years *1.00 ),2) as average_years 
+From  Project p
+Left join Employee E on p.employee_id= E.employee_id
+Group by project_id
