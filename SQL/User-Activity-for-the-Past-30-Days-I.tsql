@@ -1,0 +1,7 @@
+/* Write your T-SQL query statement below */
+Select activity_date as day ,
+Count(Distinct user_id) as active_users 
+From Activity 
+WHERE activity_date BETWEEN DATEADD(DAY, -29, '2019-07-27') AND '2019-07-27'
+--Why -29? Because both endpoints (start and end) are inclusive, subtracting 29 days gives you 30 days total.
+group by activity_date
