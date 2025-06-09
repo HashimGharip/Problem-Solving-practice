@@ -1,0 +1,9 @@
+/* Write your T-SQL query statement below */
+
+Select 
+DISTINCT(customer_id)
+From 
+Product as P 
+Inner Join Customer  as c on P.product_key =C.product_key 
+Group by customer_id 
+Having Count(Distinct(C.product_key )) = (SELECT COUNT(*) FROM Product);
